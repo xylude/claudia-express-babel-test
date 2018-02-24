@@ -1,0 +1,24 @@
+{
+  "name": "claudia-express-babel-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "copy": "cp lambda.js dist/lambda.js && cp package.json dist/package.json",
+    "create": "mkdir dist",
+    "transpile": "./node_modules/.bin/babel --presets es2015 src --out-dir dist",
+    "prebuild": "yarn clean && yarn run create && yarn copy",
+    "run-local": "yarn prebuild && yarn transpile && node ./dist/index",
+    "claudia-create": "yarn prebuild && yarn transpile && claudia create --source dist --handler dist/lambda.handler --deploy-proxy-api --region us-east-1",
+    "claudia-update": "yarn prebuild && yarn transpile && claudia update"
+  },
+  "dependencies": {
+    "aws-serverless-express": "^3.1.3",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
+  }
+}
