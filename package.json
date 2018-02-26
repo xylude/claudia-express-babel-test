@@ -6,13 +6,16 @@
   "scripts": {
     "clean": "rm -rf dist",
     "copy": "cp lambda.js dist/lambda.js && cp package.json dist/package.json",
-    "create": "mkdir dist",
+    "create-dist": "mkdir dist",
     "transpile": "./node_modules/.bin/babel --presets es2015 src --out-dir dist",
-    "prebuild": "yarn clean && yarn run create && yarn copy",
+    "prebuild": "yarn clean && yarn create-dist && yarn copy",
     "run-local": "yarn prebuild && yarn transpile && node ./dist/index",
-    "claudia-create": "yarn prebuild && yarn transpile && claudia create --source dist --handler dist/lambda.handler --deploy-proxy-api --region us-east-1",
+    "claudia-create": "yarn prebuild && yarn transpile && claudia create --handler dist/lambda.handler --deploy-proxy-api --region us-east-1",
     "claudia-update": "yarn prebuild && yarn transpile && claudia update"
   },
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "aws-serverless-express": "^3.1.3",
     "express": "^4.16.2"
