@@ -618,6 +618,10 @@ chokidar@^1.6.1:
   optionalDependencies:
     fsevents "^1.0.0"
 
+claudia-api-builder@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.npmjs.org/claudia-api-builder/-/claudia-api-builder-3.0.2.tgz#fcde016d985fbe4408c7aee0c2b29e5168df1eca"
+
 co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.npmjs.org/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
